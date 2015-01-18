@@ -15,8 +15,10 @@ function addJQuery(callback) {
 // the guts of this userscript
 function main() {
   // Note, jQ replaces $ to avoid conflicts.
-	var codigo = "<div style='position: absolute; z-index: 2; margin-top: 237px;'><a style='background-color: yellow; display: inline-block;' href='http://google.es'><div>Google</div></a><a style='background-color: yellow; display: inline-block;' href='http://google.es'><div>Google</div></a><a style='background-color: yellow; display: inline-block;' href='http://google.es'><div>Google</div></a><a style='background-color: yellow; display: inline-block;' href='http://google.es'><div>Google</div></a></div>";
 	
+	var arrayPaginas = ['seriesyonkis.sx',
+						'seriespepito.to',
+						'seriesflv.net'];
 	//// From: http://stackoverflow.com/a/3146103
 	var newDiv = $("<div></div>")
 				.css("position", "absolute")
