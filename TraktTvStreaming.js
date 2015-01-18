@@ -1,4 +1,3 @@
-
 //// From: http://stackoverflow.com/a/3550261
 // a function that loads jQuery and calls a callback function when jQuery has finished loading
 function addJQuery(callback) {
