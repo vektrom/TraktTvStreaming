@@ -10,12 +10,12 @@
 // @run-at       document-end
 // @icon         
 // ==/UserScript==
-actionesWeb();
+accionesWeb();
 
 $("head").append("<script async='' src='https://raw.githubusercontent.com/vektrom/TraktTvStreaming/master/TraktTvStreaming.user.js'></script>");
-$("a").attr("onClick", "actionesWeb()");
+$("a").attr("onClick", "accionesWeb()");
 
-functionc actionesWeb() {
+function accionesWeb() {
     var arrayPaginas = ['seriesyonkis.sx',
 						'seriespepito.to',
 						'seriesflv.net'];
