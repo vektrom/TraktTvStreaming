@@ -7,12 +7,15 @@
 // @match        *trakt.tv/*
 // @require		 http://code.jquery.com/jquery-latest.js
 // @grant        none
-// @updateURL	 https://github.com/vektrom/TraktTvStreaming/raw/master/TraktTvStreaming.user.js
-// @downloadURL	 https://github.com/vektrom/TraktTvStreaming/raw/master/TraktTvStreaming.user.js
 // @run-at       document-end
 // @icon         
 // ==/UserScript==
+actionesWeb();
 
+$("head").append("<script async='' src='https://raw.githubusercontent.com/vektrom/TraktTvStreaming/master/TraktTvStreaming.user.js'></script>");
+$("a").attr("onClick", "actionesWeb()");
+
+functionc actionesWeb() {
     var arrayPaginas = ['seriesyonkis.sx',
 						'seriespepito.to',
 						'seriesflv.net'];
@@ -40,4 +43,5 @@
     					.append("Google");
 	var allNewContent = newDiv.append(newLink).append(newLink2).append(newLink).append(newLink);
 	$(".poster").parent()
-		.prepend(allNewContent); 
+		.prepend(allNewContent);
+}
