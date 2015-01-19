@@ -10,12 +10,10 @@
 // @run-at       document-end
 // @icon         
 // ==/UserScript==
-accionesWeb();
 
-$("head").append("<script async='' src='https://raw.githubusercontent.com/vektrom/TraktTvStreaming/master/TraktTvStreaming.user.js'></script>");
-$("a").attr("onClick", "accionesWeb()");
+	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
+	$("a").attr("target", "_parent");
 
-function accionesWeb() {
     var arrayPaginas = ['seriesyonkis.sx',
 						'seriespepito.to',
 						'seriesflv.net'];
@@ -44,4 +42,3 @@ function accionesWeb() {
 	var allNewContent = newDiv.append(newLink).append(newLink2).append(newLink).append(newLink);
 	$(".poster").parent()
 		.prepend(allNewContent);
-}
