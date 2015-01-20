@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
-	$("a").attr("target", "_top");
+	$("a[href!='#']").attr("target", "_top");
 
     var arrayPaginas = ['seriesyonkis.sx',
 						'seriespepito.to',
