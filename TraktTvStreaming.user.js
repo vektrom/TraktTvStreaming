@@ -5,12 +5,10 @@
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
 // @match        *trakt.tv/*
-// @require		 http://code.jquery.com/jquery-latest.js
 // @grant        none
-// @run-at       document-end
 // @icon         
 // ==/UserScript==
-
+(function () {
 	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
 	$("a[href!='#']").attr("target", "_top");
 
@@ -42,3 +40,4 @@
 	var allNewContent = newDiv.append(newLink).append(newLink2).append(newLink).append(newLink);
 	$(".poster").parent()
 		.prepend(allNewContent);
+}());
