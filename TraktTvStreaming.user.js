@@ -33,19 +33,21 @@
 		//Obtener titulo de la url de la pagina
         	//Try&Catch para controlar si no hay enlace y coger la url actual (?)
 		infoCap.title = $(this).parent().attr("href");
-		//Limpianto titulo
-			//Falta limpiar las temporadas y el capítulo
-		infoCap.title = infoCap.title.replace("/shows/","");
-		infoCap.title = infoCap.title.replace("/movies/","");
-        	//No reemplaza el guión del año de las películas
-		infoCap.title = infoCap.title.replace("-","+");
+        
+        var slitUrl = infoCap.title.split("/");
+        infoCap.title = slitUrl[2];
+        	//Obtener info de la url actual
+        infoCap.season = (slitUrl[4]) ? slitUrl[4] : '';
+        infoCap.chapter = (slitUrl[6]) ? slitUrl[6] : '';
+        	
+		infoCap.title = infoCap.title.replace(/-/g,"+");
         
 		newDiv = $("<div></div>")
 				.css("position", "absolute")
 				.css("height", "256px");
 		
         for (var i = 0; i < arrayPaginas.length; i++) {
-			urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q='+infoCap.title+'+site:'+arrayPaginas[i].url+'+&btnI';
+			urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q='+infoCap.title+'+'+infoCap.season+'x'+infoCap.chapter+'+site:'+arrayPaginas[i].url+'+&btnI';
 			iconLink = $("<img></img>")
             			.attr("src", arrayPaginas[i].icon)
 						.attr("width", "16")
