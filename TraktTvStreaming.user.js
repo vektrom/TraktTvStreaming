@@ -12,7 +12,7 @@
 	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
 	$("a[href!='#']").attr("target", "_top");
 
-    var arrayPaginas = [{title: 'Series Yonkis', url: 'seriesyonkis.sx', icon: 'http://www.seriesyonkis.sx/favicon.ico'},
+	var arrayPaginas = [{title: 'Series Yonkis', url: 'seriesyonkis.sx', icon: 'http://www.seriesyonkis.sx/favicon.ico'},
 						{title: 'Series Pepito', url: 'seriespepito.to', icon: 'http://s.seriespepito.to/obj/img/favicon.ico'},
 						{title: 'Series FLV', url: 'seriesflv.net', icon: 'http://i.imgur.com/4c71T1I.jpg'}];
     
@@ -25,7 +25,7 @@
 	var newDiv = null;
 	var newLink = null;
 	var iconLink = null;
-    var allNewContent = null;
+	var allNewContent = null;
     
 	$(".poster").each(function (index) {
 		allNewContent = null;
