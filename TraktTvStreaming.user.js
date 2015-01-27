@@ -19,17 +19,19 @@
 	var arrayPaginas2 = 'seriesyonkis.sx';
 	var infoCap = {title: "nada", season: "nada", chapter: "nada"};
     
-	var urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q=hola&btnI';
+	var urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q=texto&btnI';
     
     // Inicializando variables de contenido
 	var newDiv = null;
 	var newLink = null;
 	var iconLink = null;
+    var allNewContent = null;
     
-	$(".poster").each(function (index, element) {
-		var allNewContent = null;
+	$(".poster").each(function (index) {
+		allNewContent = null;
         
 		//Obtener titulo de la url de la pagina
+        	//Try&Catch para controlar si no hay enlace y coger la url actual (?)
 		infoCap.title = $(this).parent().attr("href");
 		//Limpianto titulo
 		infoCap.title = infoCap.title.replace("/shows/","");
