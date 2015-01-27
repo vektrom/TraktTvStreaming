@@ -12,10 +12,13 @@
 	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
 	$("a[href!='#']").attr("target", "_top");
 
-    var arrayPaginas = ['seriesyonkis.sx',
-						'seriespepito.to',
-						'seriesflv.net'];
-	//// From: http://stackoverflow.com/a/3146103
+    var arrayPaginas = [{url: 'seriesyonkis.sx', icon: ''},
+                        {url: 'seriespepito.to', icon: ''},
+                        {url: 'seriesflv.net', icon: ''}];
+    
+    var infoCap = {title: '', season: '', chapter: ''};
+    
+	//// The correct way to do it from: http://stackoverflow.com/a/3146103
 	var newDiv = $("<div></div>")
 				.css("position", "absolute")
                 .css("height", "256px");
