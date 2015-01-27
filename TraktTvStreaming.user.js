@@ -34,6 +34,7 @@
         	//Try&Catch para controlar si no hay enlace y coger la url actual (?)
 		infoCap.title = $(this).parent().attr("href");
 		//Limpianto titulo
+			//Falta limpiar las temporadas y el capítulo
 		infoCap.title = infoCap.title.replace("/shows/","");
 		infoCap.title = infoCap.title.replace("/movies/","");
         	//No reemplaza el guión del año de las películas
