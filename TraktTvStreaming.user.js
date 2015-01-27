@@ -12,35 +12,61 @@
 	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
 	$("a[href!='#']").attr("target", "_top");
 
-    var arrayPaginas = [{url: 'seriesyonkis.sx', icon: ''},
-                        {url: 'seriespepito.to', icon: ''},
-                        {url: 'seriesflv.net', icon: ''}];
+    var arrayPaginas = [{title: 'Series Yonkis', url: 'seriesyonkis.sx', icon: 'http://www.seriesyonkis.sx/favicon.ico'},
+						{title: 'Series Pepito', url: 'seriespepito.to', icon: 'http://s.seriespepito.to/obj/img/favicon.ico'},
+						{title: 'Series FLV', url: 'seriesflv.net', icon: 'http://i.imgur.com/4c71T1I.jpg'}];
     
-    var infoCap = {title: '', season: '', chapter: ''};
+	var arrayPaginas2 = 'seriesyonkis.sx';
+	var infoCap = {title: "nada", season: "nada", chapter: "nada"};
     
-	//// The correct way to do it from: http://stackoverflow.com/a/3146103
-	var newDiv = $("<div></div>")
+	var urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q=hola&btnI';
+    
+    // Inicializando variables de contenido
+	var newDiv = null;
+	var newLink = null;
+	var iconLink = null;
+    
+	$(".poster").each(function (index, element) {
+		var allNewContent = null;
+        
+		//Obtener titulo de la url de la pagina
+		infoCap.title = $(this).parent().attr("href");
+		//Limpianto titulo
+		infoCap.title = infoCap.title.replace("/shows/","");
+		infoCap.title = infoCap.title.replace("/movies/","");
+        	//No reemplaza el guión del año de las películas
+		infoCap.title = infoCap.title.replace("-","+");
+        
+		newDiv = $("<div></div>")
 				.css("position", "absolute")
-                .css("height", "256px");
-    var newLink = $("<a></a>")
-    				.css("background-color", "yellow")
-    				.css("display", "block")
-    				.css("position", "relative")
-	    			.css("z-index", "2")
-    				.css("bottom", "0")
-    				.attr("href", "http://www.google.com/")
-    				.attr("target", "_blank")
-    					.append("Google");
-    var newLink2 = $("<a></a>")
-    				.css("background-color", "yellow")
-    				.css("display", "block")
-    				.css("position", "relative")
-	    			.css("z-index", "2")
-    				.css("bottom", "0")
-    				.attr("href", "http://www.google.com/")
-    				.attr("target", "_blank")
-    					.append("Google");
-	var allNewContent = newDiv.append(newLink).append(newLink2).append(newLink).append(newLink);
-	$(".poster").parent()
-		.prepend(allNewContent);
+				.css("height", "256px");
+		
+        for (var i = 0; i < arrayPaginas.length; i++) {
+			urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q='+infoCap.title+'+site:'+arrayPaginas[i].url+'+&btnI';
+			iconLink = $("<img></img>")
+            			.attr("src", arrayPaginas[i].icon)
+						.attr("width", "16")
+						.attr("height", "16");
+			
+			
+            newLink = $("<a></a>")
+						.css("background-color", "white")
+						.css("display", "block")
+						.css("position", "relative")
+						.css("z-index", "2")
+						.css("bottom", "0")
+						.attr("title", arrayPaginas[i].title)
+						.attr("alt", arrayPaginas[i].title)
+						.attr("href", urlBusqueda)
+						.attr("target", "_blank")
+							.append(iconLink);
+            
+			allNewContent = newDiv.append(newLink);
+    	}
+        
+		$(this).parent().prepend(allNewContent);
+        
+	})
+	
+	
 }());
