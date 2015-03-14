@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trakt.Tv Streaming
 // @namespace    https://github.com/vektrom/
-// @version      0.3
+// @version      0.2
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
 // @match        *trakt.tv/*
@@ -35,7 +35,8 @@
         try{
             var urlActual = "";
             urlActual = window.location.pathname;
-            if (urlActual.indexOf("episodes")) {
+            // El -1 lo cuenta como true.
+            if (urlActual.indexOf("episodes") > -1) {
                 infoCap.title = urlActual;
             }
             else {
