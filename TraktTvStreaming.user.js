@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trakt.Tv Streaming
 // @namespace    https://github.com/vektrom/
-// @version      0.2
+// @version      0.3
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
 // @match        *trakt.tv/*
@@ -32,45 +32,67 @@
         
 		//Obtener titulo de la url de la pagina
         	//Try&Catch para controlar si no hay enlace y coger la url actual (?)
-		infoCap.title = $(this).parent().attr("href");
-        
-        var slitUrl = infoCap.title.split("/");
-        infoCap.title = slitUrl[2];
-        	//Obtener info de la url actual
-        infoCap.season = (slitUrl[4]) ? slitUrl[4] : '';
-        infoCap.chapter = (slitUrl[6]) ? slitUrl[6] : '';
-        	
-		infoCap.title = infoCap.title.replace(/-/g,"+");
-        
-		newDiv = $("<div></div>")
-				.css("position", "absolute")
-				.css("height", "256px");
-		
-        for (var i = 0; i < arrayPaginas.length; i++) {
-			urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q='+infoCap.title+'+'+infoCap.season+'x'+infoCap.chapter+'+site:'+arrayPaginas[i].url+'+&btnI';
-			iconLink = $("<img></img>")
-            			.attr("src", arrayPaginas[i].icon)
-						.attr("width", "16")
-						.attr("height", "16");
-			
-			
-            newLink = $("<a></a>")
-						.css("background-color", "white")
-						.css("display", "block")
-						.css("position", "relative")
-						.css("z-index", "2")
-						.css("bottom", "0")
-						.attr("title", arrayPaginas[i].title)
-						.attr("alt", arrayPaginas[i].title)
-						.attr("href", urlBusqueda)
-						.attr("target", "_blank")
-							.append(iconLink);
+        try{
+            var urlActual = "";
+            urlActual = window.location.pathname;
+            if (urlActual.indexOf("episodes")) {
+                infoCap.title = urlActual;
+            }
+            else {
+                infoCap.title = $(this).parent().attr("href");
+            }
+            var slitUrl = infoCap.title.split("/");
+            infoCap.title = slitUrl[2];
+            //Obtener info de la url actual
+            infoCap.season = (slitUrl[4]) ? slitUrl[4] : '';
+            infoCap.chapter = (slitUrl[6]) ? slitUrl[6] : '';
+
+            infoCap.title = infoCap.title.replace(/-/g,"+");
             
-			allNewContent = newDiv.append(newLink);
-    	}
-        
-		$(this).parent().prepend(allNewContent);
-        
+            // Si sabemos el cap. buscamos por capítulo. Si no lo sabemos, buscamos sólo por titulo de la serie.
+            var stringBusquedaSerie = "";
+            if (infoCap.chapter) {
+                stringBusquedaSerie = infoCap.title+'+'+infoCap.season+'x'+infoCap.chapter;
+            }
+            else {
+                stringBusquedaSerie = infoCap.title;
+            }
+            
+            //Div contenedor de los enlaces
+            newDiv = $("<div></div>")
+            .css("position", "absolute")
+            .css("height", "256px");
+
+            //Bucle para añadir todos los enlaces del array
+            for (var i = 0; i < arrayPaginas.length; i++) {
+                urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q='+stringBusquedaSerie+'+site:'+arrayPaginas[i].url+'+&btnI';
+                iconLink = $("<img></img>")
+                .attr("src", arrayPaginas[i].icon)
+                .attr("width", "16")
+                .attr("height", "16");
+
+
+                newLink = $("<a></a>")
+                .css("background-color", "white")
+                .css("display", "block")
+                .css("position", "relative")
+                .css("z-index", "2")
+                .css("bottom", "0")
+                .attr("title", arrayPaginas[i].title)
+                .attr("alt", arrayPaginas[i].title)
+                .attr("href", urlBusqueda)
+                .attr("target", "_blank")
+                .append(iconLink);
+
+                allNewContent = newDiv.append(newLink);
+            }
+
+            // Añadimos a la página todo lo creado.
+            $(this).parent().prepend(allNewContent);
+        }
+        catch(e){
+            
+        }
 	})
 	
 	
