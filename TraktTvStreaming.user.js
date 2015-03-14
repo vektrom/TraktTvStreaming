@@ -27,7 +27,7 @@
 	var iconLink = null;
 	var allNewContent = null;
     
-	$(".poster").each(function (index) {
+	$(".poster, .fanart").each(function (index) {
 		allNewContent = null;
         
 		//Obtener titulo de la url de la pagina
