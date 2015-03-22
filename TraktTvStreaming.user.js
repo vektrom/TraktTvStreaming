@@ -4,7 +4,7 @@
 // @version      0.3
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
-// @match        *trakt.tv/*
+// @match        *://trakt.tv/*
 // @grant        none
 // @icon         
 // ==/UserScript==
