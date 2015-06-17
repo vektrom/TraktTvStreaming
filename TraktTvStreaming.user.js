@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trakt.Tv Streaming
 // @namespace    https://github.com/vektrom/
-// @version      0.3
+// @version      0.4
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
 // @match        *://trakt.tv/*
@@ -19,7 +19,7 @@
 	var arrayPaginas2 = 'seriesyonkis.sx';
 	var infoCap = {title: "nada", season: "nada", chapter: "nada"};
     
-	var urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q=texto&btnI';
+	var urlBusqueda = 'https://www.google.es/search?gws_rd=ssl&q=texto&btnI';
     
     // Inicializando variables de contenido
 	var newDiv = null;
@@ -66,7 +66,7 @@
 
             //Bucle para añadir todos los enlaces del array
             for (var i = 0; i < arrayPaginas.length; i++) {
-                urlBusqueda = 'https://www.google.es/?gws_rd=ssl#q='+stringBusquedaSerie+'+site:'+arrayPaginas[i].url+'+&btnI';
+                urlBusqueda = 'https://www.google.es/search?gws_rd=ssl&q='+stringBusquedaSerie+'+site:'+arrayPaginas[i].url+'&btnI';
                 iconLink = $("<img></img>")
                 .attr("src", arrayPaginas[i].icon)
                 .attr("width", "16")
