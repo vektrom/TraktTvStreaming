@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trakt.Tv Streaming
 // @namespace    https://github.com/vektrom/
-// @version      0.4
+// @version      0.4.1
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
 // @match        *://trakt.tv/*
