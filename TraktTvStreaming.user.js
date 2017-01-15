@@ -12,9 +12,12 @@
 	// No se otra manera de hacer que se ejecute el script de otra manera, ya que por defecto al clicar no se recarga la pagina entera.
 	$("a[href!='#']").attr("target", "_top");
 
-	var arrayPaginas = [{title: 'Series Yonkis', url: 'seriesyonkis.sx', icon: 'http://www.seriesyonkis.sx/favicon.ico'},
-						{title: 'Series Pepito', url: 'seriespepito.to', icon: 'http://s.seriespepito.to/obj/img/favicon.ico'},
-						{title: 'Series FLV', url: 'seriesflv.net', icon: 'http://i.imgur.com/4c71T1I.jpg'}];
+	var arrayPaginas = [
+		{title: 'Series Yonkis', url: 'seriesyonkis.sx', icon: 'http://www.seriesyonkis.sx/favicon.ico'},
+		{title: 'Series Pepito', url: 'seriespepito.to', icon: 'http://s.seriespepito.to/obj/img/favicon.ico'},
+		{title: 'Ver Series y Novelas', url: 'verseriesynovelas.tv', icon: 'http://i.imgur.com/Vp9fUbW.png'},
+		{title: 'Series FLV', url: 'seriesflv.net', icon: 'http://i.imgur.com/4c71T1I.jpg'}
+	];
     
 	var arrayPaginas2 = 'seriesyonkis.sx';
 	var infoCap = {title: "nada", season: "nada", chapter: "nada"};
