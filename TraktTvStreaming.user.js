@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Trakt.Tv Streaming
 // @namespace    https://github.com/vektrom/
-// @version      0.4.1
+// @version      0.4.2
 // @description  Enlaces a paginas para ver series en streaming.
 // @author       Vektrom
 // @match        *://trakt.tv/*
@@ -13,9 +13,7 @@
 	$("a[href!='#']").attr("target", "_top");
 
 	var arrayPaginas = [
-		{title: 'Series Yonkis', url: 'seriesyonkis.sx', icon: 'http://www.seriesyonkis.sx/favicon.ico'},
-		{title: 'Series Pepito', url: 'seriespepito.to', icon: 'http://s.seriespepito.to/obj/img/favicon.ico'},
-		{title: 'Ver Series y Novelas', url: 'verseriesynovelas.tv', icon: 'http://i.imgur.com/Vp9fUbW.png'},
+		{title: 'SeriesBlanco', url: 'seriesblanco.com', icon: 'http://i.imgur.com/NxH40gZ.png'},
 		{title: 'Series FLV', url: 'seriesflv.net', icon: 'http://i.imgur.com/4c71T1I.jpg'}
 	];
     
